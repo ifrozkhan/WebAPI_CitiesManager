@@ -39,8 +39,8 @@ namespace CitiesManager.WebAPI.Controllers
             {
                 employees.Add(new Employee_Details
                 {
-                    Emp_ID = reader.GetInt32(reader.GetOrdinal("Employee_ID")),
-                    Emp_Name = reader["Name"]?.ToString(),
+                    Emp_ID = reader.GetInt32(reader.GetOrdinal("Emp_ID")),
+                    Emp_Name = reader["Emp_Name"]?.ToString(),
                     Type = reader["Type"]?.ToString(),
                     Gender = reader["Gender"]?.ToString(),
                     DOB = reader.GetDateTime(reader.GetOrdinal("DOB")),
@@ -59,10 +59,10 @@ namespace CitiesManager.WebAPI.Controllers
             await conn.OpenAsync();
 
             var cmd = new SqlCommand(
-                "SELECT * FROM Employee_Details WHERE Employee_ID = @Employee_ID",
+                "SELECT * FROM Employee_Details WHERE Emp_ID = @Emp_ID",
                 conn
             );
-            cmd.Parameters.Add("@Employee_ID", System.Data.SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@Emp_ID", System.Data.SqlDbType.Int).Value = id;
 
             using var reader = await cmd.ExecuteReaderAsync();
 
@@ -91,9 +91,9 @@ namespace CitiesManager.WebAPI.Controllers
 
             var cmd = new SqlCommand(
                 @"INSERT INTO Employee_Details
-                  (Emp_ID, Name, Type, Gender, DOB, Address)
+                  (Emp_ID, Emp_Name, Type, Gender, DOB, Address)
                   VALUES
-                  (@Emp_ID, @Name, @Type, @Gender, @DOB, @Address)",
+                  (@Emp_ID, @Emp_Name, @Type, @Gender, @DOB, @Address)",
                 conn
             );
 
@@ -118,17 +118,17 @@ namespace CitiesManager.WebAPI.Controllers
 
             var cmd = new SqlCommand(
                 @"UPDATE Employee_Details
-                  SET Name = @Name,
+                  SET Emp_Name = @Emp_Name,
                       Type = @Type,
                       Gender = @Gender,
                       DOB = @DOB,
                       Address = @Address
-                  WHERE Employee_ID = @Employee_ID",
+                  WHERE Emp_ID = @Emp_ID",
                 conn
             );
 
-            cmd.Parameters.Add("@Employee_ID", System.Data.SqlDbType.Int).Value = id;
-            cmd.Parameters.Add("@Name", System.Data.SqlDbType.NVarChar).Value = employee.Emp_Name ?? (object)DBNull.Value;
+            cmd.Parameters.Add("@Emp_ID", System.Data.SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@Emp_Name", System.Data.SqlDbType.NVarChar).Value = employee.Emp_Name ?? (object)DBNull.Value;
             cmd.Parameters.Add("@Type", System.Data.SqlDbType.NVarChar).Value = employee.Type ?? (object)DBNull.Value;
             cmd.Parameters.Add("@Gender", System.Data.SqlDbType.NVarChar).Value = employee.Gender ?? (object)DBNull.Value;
             cmd.Parameters.Add("@DOB", System.Data.SqlDbType.DateTime).Value = employee.DOB;
@@ -150,10 +150,10 @@ namespace CitiesManager.WebAPI.Controllers
             await conn.OpenAsync();
 
             var cmd = new SqlCommand(
-                "DELETE FROM Employee_Details WHERE Employee_ID = @Employee_ID",
+                "DELETE FROM Employee_Details WHERE Emp_ID = @Emp_ID",
                 conn
             );
-            cmd.Parameters.Add("@Employee_ID", System.Data.SqlDbType.Int).Value = id;
+            cmd.Parameters.Add("@Emp_ID", System.Data.SqlDbType.Int).Value = id;
 
             var rows = await cmd.ExecuteNonQueryAsync();
 
