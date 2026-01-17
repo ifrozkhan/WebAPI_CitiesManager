@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CitiesManager.Controllers
 {
+    // Migration Controller
+
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

@@ -8,6 +8,8 @@ using CitiesManager.WebAPI.Models;
 
 namespace CitiesManager.WebAPI.Controllers
 {
+    // Entity FrameWork Controller
+
     [ApiController]
     [Route("api/[controller]")]
     public class Employee_DetailsController : ControllerBase

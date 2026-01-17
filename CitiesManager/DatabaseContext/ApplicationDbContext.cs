@@ -1,4 +1,6 @@
-﻿using CitiesManager.WebAPI.Models;
+﻿//using CitiesManager.Models;
+using CitiesManager.Models;
+using CitiesManager.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,12 @@ namespace CitiesManager.WebAPI.DatabaseContext
         {
         }
 
+        //Employee Details table
         public virtual DbSet<Employee_Details> Employee_Details { get; set; }
+
+        //Employee Full Details Table
+        public virtual DbSet<Employee_Full_Details> Employee_Full_Details { get; set; }
+
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

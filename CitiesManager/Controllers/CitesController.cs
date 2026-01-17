@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace CitiesManager.WebAPI.Controllers
 {
+    // Hardcoded API controller
+
     [ApiController]
     [Route("api/[controller]")]
     public class CitiesController : ControllerBase

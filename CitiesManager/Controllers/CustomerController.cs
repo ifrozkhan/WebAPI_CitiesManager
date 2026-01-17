@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace CitiesManager.WebAPI.Controllers
 {
+    // Using Sql Connection Querys Controller
+
     [ApiController]
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase

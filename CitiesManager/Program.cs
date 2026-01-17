@@ -1,3 +1,4 @@
+using CitiesManager.Repositories;
 using CitiesManager.WebAPI.DatabaseContext;
 using CitiesManager.WebAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ builder.Services.AddSwaggerGen();
 
 // Repository (Dapper)
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IEmployeeFullDetailsRepository, EmployeeFullDetailsRepository>();
 
 //  Register CORS policy
 builder.Services.AddCors(options => { options.AddPolicy("AllowAngularClient", policy => policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()); });

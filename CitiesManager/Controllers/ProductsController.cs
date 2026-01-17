@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace CitiesManager.WebAPI.Controllers
 {
+    /// Using SqlConnection Querys Controller
+
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
@@ -20,8 +22,7 @@ namespace CitiesManager.WebAPI.Controllers
             _connectionString = context.Database.GetConnectionString();
         }
 
-        private SqlConnection CreateConnection()
-            => new SqlConnection(_connectionString);
+        private SqlConnection CreateConnection() => new SqlConnection(_connectionString);
 
         // GET: api/Products
         [HttpGet]
